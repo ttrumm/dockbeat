@@ -119,14 +119,14 @@ func (bt *Dockbeat) Config(b *beat.Beat) error {
 
 	// init the stats statsConfig
 	bt.statsConfig = StatsConfig{
-		Container: true,
-		Net:       true,
+		Container: false,
+		Net:       false,
 		Memory:    true,
-		Blkio:     true,
+		Blkio:     false,
 		Cpu:       true,
 	}
 
-	if bt.beatConfig.Dockbeat.Stats.Container != nil && !*bt.beatConfig.Dockbeat.Stats.Container {
+/*	if bt.beatConfig.Dockbeat.Stats.Container != nil && !*bt.beatConfig.Dockbeat.Stats.Container {
 		bt.statsConfig.Container = false
 	}
 	if bt.beatConfig.Dockbeat.Stats.Net != nil && !*bt.beatConfig.Dockbeat.Stats.Net {
@@ -141,7 +141,7 @@ func (bt *Dockbeat) Config(b *beat.Beat) error {
 	if bt.beatConfig.Dockbeat.Stats.Cpu != nil && !*bt.beatConfig.Dockbeat.Stats.Cpu {
 		bt.statsConfig.Cpu = false
 	}
-
+*/
 	logp.Info("dockbeat", "Init dockbeat")
 	logp.Info("dockbeat", "Follow docker socket %v\n", bt.socketConfig.socket)
 	if bt.socketConfig.enableTls {
