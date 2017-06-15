@@ -7,12 +7,12 @@ RUN cd /tmp/PyYAML-3.11 && python setup.py install
 # install glide
 RUN go get github.com/Masterminds/glide
 
-COPY . $GOPATH/src/github.com/ingensi/dockbeat
-RUN cd $GOPATH/src/github.com/ingensi/dockbeat && make && make
+COPY . $GOPATH/src/github.com/ttrumm/dockbeat
+RUN cd $GOPATH/src/github.com/ttrumm/dockbeat && make && make
 
 RUN mkdir -p /etc/dockbeat/ \
-    && cp $GOPATH/src/github.com/ingensi/dockbeat/dockbeat /usr/local/bin/dockbeat \
-    && cp $GOPATH/src/github.com/ingensi/dockbeat/dockbeat-docker.yml /etc/dockbeat/dockbeat.yml
+    && cp $GOPATH/src/github.com/ttrumm/dockbeat/dockbeat /usr/local/bin/dockbeat \
+    && cp $GOPATH/src/github.com/ttrumm/dockbeat/dockbeat-docker.yml /etc/dockbeat/dockbeat.yml
 
 ADD logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
 ADD logstash-forwarder.key /etc/pki/tls/private/logstash-forwarder.key
