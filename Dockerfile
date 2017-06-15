@@ -14,6 +14,12 @@ RUN mkdir -p /etc/dockbeat/ \
     && cp $GOPATH/src/github.com/ingensi/dockbeat/dockbeat /usr/local/bin/dockbeat \
     && cp $GOPATH/src/github.com/ingensi/dockbeat/dockbeat-docker.yml /etc/dockbeat/dockbeat.yml
 
+ADD logstash-forwarder.crt /etc/pki/tls/certs/logstash-forwarder.crt
+ADD logstash-forwarder.key /etc/pki/tls/private/logstash-forwarder.key
+ADD dockbeat.yml /etc/dockbeat/dockbeat.yml
+ADD init.sh /usr/local/sbin/init.sh
+RUN chmod +x /usr/local/sbin/init.sh
+
 WORKDIR /etc/dockbeat
 ENTRYPOINT dockbeat
 
