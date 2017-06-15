@@ -120,7 +120,7 @@ func (bt *Dockbeat) Config(b *beat.Beat) error {
 	// init the stats statsConfig
 	bt.statsConfig = StatsConfig{
 		Container: false,
-		Net:       false,
+		Net:       true,
 		Memory:    true,
 		Blkio:     false,
 		Cpu:       true,
