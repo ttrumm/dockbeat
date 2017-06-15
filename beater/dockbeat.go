@@ -15,9 +15,9 @@ import (
 
 	"github.com/fsouza/go-dockerclient"
 
-	"github.com/ingensi/dockbeat/calculator"
-	"github.com/ingensi/dockbeat/config"
-	"github.com/ingensi/dockbeat/event"
+	"github.com/ttrumm/dockbeat/calculator"
+	"github.com/ttrumm/dockbeat/config"
+	"github.com/ttrumm/dockbeat/event"
 )
 
 // const for event logs
